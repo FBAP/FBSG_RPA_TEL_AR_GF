@@ -1,0 +1,231 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ReadFlatFile_Workflow" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_BusinessConfig" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="io_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_FlatFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="out_DataRowCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_strPONumber" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strInvoiceType" Type="OutArgument(x:String)" />
+    <x:Property Name="out_dt_FlatFileData" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>720.666666666667,802</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ReadFlatFile_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="30">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Sequence - Read Flat File" sap:VirtualizedContainerService.HintSize="476,737.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch - Read Flat File" sap:VirtualizedContainerService.HintSize="434,645.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence sap2010:Annotation.AnnotationText="This Workflow is used to read the downloaded flatfile." DisplayName="ReadFlatFile" sap:VirtualizedContainerService.HintSize="200,114.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:Int32" Name="intFlatFileRowCount" />
+            <Variable x:TypeArguments="sd:DataTable" Name="dt_DataExcel" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message ReadFlatFile Started" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Read FlatFile workflow started&quot;]" />
+          <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Reading the downloaded flatfiles" DisplayName="Excel Application Scope - Reading FlatFile" sap:VirtualizedContainerService.HintSize="334,98" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_FlatFilePath]">
+            <ui:ExcelApplicationScope.Body>
+              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,575.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message Read the downloaded flatfile data" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Read the downloaded flatfile data&quot;]" />
+                  <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_DataExcel]" DisplayName="Read Range - Flatfiles Complete Data" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[io_BusinessConfig(&quot;INTELFlatFileSheetName&quot;).ToString]">
+                    <ui:ExcelReadRange.Range>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ui:ExcelReadRange.Range>
+                  </ui:ExcelReadRange>
+                  <ui:ExcelReadCell Cell="A2" DisplayName="Read Cell - PO Number" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="[io_BusinessConfig(&quot;INTELFlatFileSheetName&quot;).ToString]">
+                    <ui:ExcelReadCell.Result>
+                      <OutArgument x:TypeArguments="x:String">[out_strPONumber]</OutArgument>
+                    </ui:ExcelReadCell.Result>
+                  </ui:ExcelReadCell>
+                  <ui:ExcelReadCell Cell="F2" DisplayName="Read Cell - Order Category (Invoice Type)" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" SheetName="[io_BusinessConfig(&quot;INTELFlatFileSheetName&quot;).ToString]">
+                    <ui:ExcelReadCell.Result>
+                      <OutArgument x:TypeArguments="x:String">[out_strInvoiceType]</OutArgument>
+                    </ui:ExcelReadCell.Result>
+                  </ui:ExcelReadCell>
+                  <ui:MultipleAssign DisplayName="Multiple Assign - FlatFile Data" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                    <ui:MultipleAssign.AssignOperations>
+                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Int32">[intFlatFileRowCount]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Int32">[dt_DataExcel.RowCount]</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Int32">[out_DataRowCount]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Int32">[intFlatFileRowCount]</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="sd:DataTable">[out_dt_FlatFileData]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="sd:DataTable">[dt_DataExcel]</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                      </scg:List>
+                    </ui:MultipleAssign.AssignOperations>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:MultipleAssign>
+                </Sequence>
+              </ActivityAction>
+            </ui:ExcelApplicationScope.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ExcelApplicationScope>
+          <ui:LogMessage DisplayName="Log Message ReadFlatFile Ended" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Read FlatFile workflow ended&quot;]" />
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,473.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Sequence - Exception in Read Flat File" sap:VirtualizedContainerService.HintSize="376,402.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message - Issue Occured in Read Flat File" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;Issue Occured in Reading FlatFile Workflow&quot;]" />
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendExceptionEmail workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Other Wokflow\SendExceptionEmail.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_BusinessConfig(&quot;BusinessConfigNotificationEmailSubject&quot;).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_BusinessConfig(&quot;ReadFlatFileExceptionEmailBody&quot;).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_BusinessConfig(&quot;BusinessConfigNotificationEmailRecipientsCCList&quot;).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_BusinessConfig(&quot;BusinessConfigNotificationEmailRecipientsList&quot;).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_SentOnBehalfOfName">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_BusinessConfig(&quot;BusinessConfigNotificationEmailSenderName&quot;).ToString" />
+                  </InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <Rethrow DisplayName="Rethrow - Read Flat File" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
