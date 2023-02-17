@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>766,2550.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>720.666666666667,2550.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GF_LoginWorkflow_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -68,6 +68,7 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="This workflow is used to login to the Global Foundries webpage." DisplayName="GF_LoginWorkflow" sap:VirtualizedContainerService.HintSize="602,2486" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -95,7 +96,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message Entering User Name" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Entering the UserName for Global Foundries Webpage&quot;]" />
-            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="Global Foundries Login UserName" DisplayName="Type Into - UserName" EmptyField="True" sap:VirtualizedContainerService.HintSize="484,164.666666666667" sap2010:WorkflowViewState.IdRef="TypeInto_3" SimulateType="True" Text="[io_BusinessConfig(&quot;GlobalFoundriesUserName&quot;).ToString]">
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="Global Foundries Login UserName" DisplayName="Type Into - UserName" EmptyField="True" sap:VirtualizedContainerService.HintSize="484,164.666666666667" sap2010:WorkflowViewState.IdRef="TypeInto_3" SimulateType="True" Text="[io_BusinessConfig(&quot;GF_UserName&quot;).ToString]">
               <ui:TypeInto.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d51bb9a9-6b3f-42c5-aa23-b66847232710" InformativeScreenshot="a7f3e13f941f89a4316e3fa0ab7b59be" Selector="&lt;webctrl name='usernameField' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
@@ -110,7 +111,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:TypeInto>
             <ui:LogMessage DisplayName="Log Message Entering Password" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Entering the Password for Global Foundries Webpage&quot;]" />
-            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="Global Foundries Login Password" DisplayName="Type Into - Password" EmptyField="True" sap:VirtualizedContainerService.HintSize="484,164.666666666667" sap2010:WorkflowViewState.IdRef="TypeInto_4" SimulateType="True" Text="[io_BusinessConfig(&quot;GlobalFoundriesPassword&quot;).ToString]">
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="Global Foundries Login Password" DisplayName="Type Into - Password" EmptyField="True" sap:VirtualizedContainerService.HintSize="484,164.666666666667" sap2010:WorkflowViewState.IdRef="TypeInto_4" SimulateType="True" Text="[io_BusinessConfig(&quot;GF_Password&quot;).ToString]">
               <ui:TypeInto.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d51bb9a9-6b3f-42c5-aa23-b66847232710" InformativeScreenshot="88fa45b4fb01070cea5fa0a09e0d41ad" Selector="&lt;webctrl name='passwordField' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
