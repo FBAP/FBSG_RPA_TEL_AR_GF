@@ -76,6 +76,7 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Sequence - GF_CreateInvoiceWorkflow" sap:VirtualizedContainerService.HintSize="557.333333333333,2712" sap2010:WorkflowViewState.IdRef="Sequence_4">
@@ -88,7 +89,11 @@
       <TryCatch.Try>
         <Sequence sap2010:Annotation.AnnotationText="This Workflow is used to perform the required automations steps of Global Foundries Webpage." DisplayName="GF_CreateInvoiceWorkflow" sap:VirtualizedContainerService.HintSize="476.666666666667,2382" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Sequence.Variables>
-            <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="PO Number, extracted from flatfile" Default="371003082797" Name="strPONumber" />
+            <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="PO Number, extracted from flatfile" Name="strPONumber">
+              <Variable.Default>
+                <Literal x:TypeArguments="x:String">351005051556</Literal>
+              </Variable.Default>
+            </Variable>
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
