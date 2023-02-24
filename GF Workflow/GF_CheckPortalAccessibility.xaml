@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="io_BusinessConfig" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="io_BrowserInstance" Type="InOutArgument(ui:Browser)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>810.666666666667,2392</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>810.666666666667,1955.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GF_CheckPortalAccessibility_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,22 +70,18 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow checks whether GF portal is accessible or not.&#xA;If No, then sends exception email" DisplayName="Sequence - GF_CheckPortalAccessibility" sap:VirtualizedContainerService.HintSize="820.666666666667,2327.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="ui:Browser" Name="BrowserInstance" />
-    </Sequence.Variables>
+  <Sequence sap2010:Annotation.AnnotationText="This workflow checks whether GF portal is accessible or not.&#xA;If No, then sends exception email" DisplayName="Sequence - GF_CheckPortalAccessibility" sap:VirtualizedContainerService.HintSize="820.666666666667,1890.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch - GF_CheckPortalAccessibility" sap:VirtualizedContainerService.HintSize="778.666666666667,2190" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - GF_CheckPortalAccessibility" sap:VirtualizedContainerService.HintSize="778.666666666667,1753.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="GF_CheckPortalAccessibility" sap:VirtualizedContainerService.HintSize="740,1952" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence DisplayName="GF_CheckPortalAccessibility" sap:VirtualizedContainerService.HintSize="740,1515.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Boolean" Name="boolLoginExists" />
           </Sequence.Variables>
@@ -95,13 +92,13 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:LogMessage DisplayName="Log Message: GF Login flow - Started" sap:VirtualizedContainerService.HintSize="698,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;GF_CheckPortalAccessibility workflows started&quot;]" />
           <ui:LogMessage DisplayName="Log Message: Opening GF portal" sap:VirtualizedContainerService.HintSize="698,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Opening GF portal&quot;]" />
-          <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" sap2010:Annotation.AnnotationText="Opening the GF web portal" BrowserType="Chrome" DisplayName="Open Browser - GlobalFoundries" sap:VirtualizedContainerService.HintSize="698,1456" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[BrowserInstance]" Url="[io_BusinessConfig(&quot;GF_URL&quot;).ToString]">
+          <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" sap2010:Annotation.AnnotationText="Opening the GF web portal" BrowserType="Chrome" DisplayName="Open Browser - GlobalFoundries" sap:VirtualizedContainerService.HintSize="698,1019.33333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[io_BrowserInstance]" Url="[io_BusinessConfig(&quot;GF_URL&quot;).ToString]">
             <ui:OpenBrowser.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do - GlobalFoundries" sap:VirtualizedContainerService.HintSize="664,1322.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Do - GlobalFoundries" sap:VirtualizedContainerService.HintSize="664,886" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -114,8 +111,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:MaximizeWindow>
-                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="622,85.3333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[TimeSpan.Parse(io_Config(&quot;RetryInterval&quot;).ToString)]" />
-                  <ui:RetryScope sap2010:Annotation.AnnotationText="Retry scope added to check if login page exists. &#xA;If not, it retries for 3 times." DisplayName="Retry Scope: GF Login pop up" sap:VirtualizedContainerService.HintSize="622,426" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(io_Config(&quot;NumberOfRetries&quot;).ToString)]" RetryInterval="[TimeSpan.Parse(io_Config(&quot;RetryInterval&quot;).ToString)]">
+                  <ui:RetryScope sap2010:Annotation.AnnotationText="Retry scope added to check if login page exists. &#xA;If not, it retries for 3 times." DisplayName="Retry Scope: GF Login pop up" sap:VirtualizedContainerService.HintSize="622,114.666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(io_Config(&quot;NumberOfRetries&quot;).ToString)]" RetryInterval="[TimeSpan.Parse(io_Config(&quot;RetryInterval&quot;).ToString)]">
                     <ui:RetryScope.ActivityBody>
                       <ActivityAction>
                         <Sequence DisplayName="Action Refresh Browser" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_5">
@@ -144,7 +140,7 @@
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -175,7 +171,7 @@
                               <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="io_Config" />
                             </InOutArgument>
                             <InOutArgument x:TypeArguments="ui:Browser" x:Key="io_BrowserInstance">
-                              <mva:VisualBasicReference x:TypeArguments="ui:Browser" ExpressionText="BrowserInstance" />
+                              <mva:VisualBasicReference x:TypeArguments="ui:Browser" ExpressionText="io_BrowserInstance" />
                             </InOutArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
@@ -196,7 +192,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:OpenBrowser>
-          <ui:LogMessage DisplayName="Log Message: GF Login flow -Ended" sap:VirtualizedContainerService.HintSize="560,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;GF_CheckPortalAccessibility workflows ended&quot;]" />
+          <ui:LogMessage DisplayName="Log Message: GF Login flow -Ended" sap:VirtualizedContainerService.HintSize="698,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;GF_CheckPortalAccessibility workflows ended&quot;]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
